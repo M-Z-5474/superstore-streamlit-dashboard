@@ -16,7 +16,8 @@ A fully interactive, professional **Streamlit dashboard** built for analyzing th
 
 ## 🚀 Live Demo
 
-🌐 [**Click here to view the deployed app**]([https://your-streamlit-cloud-link](https://superstore-app-dashboard-gznge95jntfl2yardnu4nc.streamlit.app/))
+🌐 [**Click here to view the deployed app**] 
+([https://your-streamlit-cloud-link](https://superstore-app-dashboard-gznge95jntfl2yardnu4nc.streamlit.app/))
 
 
 ---
