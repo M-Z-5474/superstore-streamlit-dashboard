@@ -65,12 +65,12 @@ A fully interactive, professional **Streamlit dashboard** built for analyzing th
 ## 📁 Folder Structure
 
 ```
-📦 Global_Superstore_Dashboard/
+📦 superstore-streamlit-dashboard
 ├── 📄 app.py                 # Main Streamlit dashboard code
 ├── 📄 Global_Superstore.csv  # Dataset (input file)
 ├── 📄 requirements.txt       # Python dependencies
 ├── 📄 README.md              # Project documentation
-└── 📁 screenshots/           # App screenshots (optional)
+└── 📁 screenshots/           # App screenshots 
 ```
 
 ---
