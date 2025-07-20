@@ -8,7 +8,6 @@ st.title("📊 Global Superstore Sales Dashboard")
 
 # Load data
 @st.cache_data
-
 def load_data():
     df = pd.read_csv("Global_Superstore.csv", encoding='latin1')
     df['Order Date'] = pd.to_datetime(df['Order Date'], errors='coerce')
@@ -72,11 +71,17 @@ product_sales = df.groupby("Product Name")["Sales"].sum().reset_index().sort_val
 fig4 = px.bar(product_sales, x="Sales", y="Product Name", orientation='h', title="Top 10 Products by Sales", text_auto=True)
 st.plotly_chart(fig4, use_container_width=True)
 
-# 👥 Customer-Level Analysis
+# 👥 Customer-Level Analysis: Top 10 by Profit
 st.subheader("🏆 Top 10 Customers by Profit")
-top_customers = df.groupby("Customer Name")["Profit"].sum().reset_index().sort_values(by="Profit", ascending=False).head(10)
-fig5 = px.bar(top_customers, x="Profit", y="Customer Name", orientation='h', title="Top Customers by Profit", text_auto=True)
+top_profit_customers = df.groupby("Customer Name")["Profit"].sum().reset_index().sort_values(by="Profit", ascending=False).head(10)
+fig5 = px.bar(top_profit_customers, x="Profit", y="Customer Name", orientation='h', title="Top Customers by Profit", text_auto=True)
 st.plotly_chart(fig5, use_container_width=True)
+
+# 🥇 Top 5 Customers by Sales (✅ Added as per instructions)
+st.subheader("🏅 Top 5 Customers by Sales")
+top_sales_customers = df.groupby("Customer Name")["Sales"].sum().reset_index().sort_values(by="Sales", ascending=False).head(5)
+fig_top_sales = px.bar(top_sales_customers, x="Sales", y="Customer Name", orientation='h', title="Top Customers by Sales", text_auto=True)
+st.plotly_chart(fig_top_sales, use_container_width=True)
 
 # 🗺️ City-Wise Sales Map
 st.subheader("🌍 City-wise Sales Distribution")
