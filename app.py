@@ -2,119 +2,70 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Set Streamlit page configuration
-st.set_page_config(page_title="Global Superstore Dashboard", layout="wide")
+# Load data
+df = pd.read_csv("Global_Superstore.csv", encoding='latin1')
 
-# Title
-st.title("📊 Global Superstore Sales Dashboard")
+# Data preprocessing
+df['Order Date'] = pd.to_datetime(df['Order Date'], errors='coerce')
+df['Year'] = df['Order Date'].dt.year
+df.dropna(subset=['Order Date', 'Sales', 'Profit', 'Customer Name'], inplace=True)
 
-# Load and clean dataset
-@st.cache_data
-def load_data():
-    df = pd.read_csv("Global_Superstore.csv", encoding='latin1')
-    
-    # Convert dates
-    df['Order Date'] = pd.to_datetime(df['Order Date'], errors='coerce')
-    df['Year'] = df['Order Date'].dt.year
-    
-    # Drop rows with missing critical values
-    df = df.dropna(subset=['Sales', 'Profit', 'Customer Name', 'Category', 'Region', 'Sub-Category', 'Order Date'])
-    
-    return df
+# Sidebar filters
+st.sidebar.header("Filter Options")
+years = sorted(df['Year'].dropna().unique())
+year_filter = st.sidebar.selectbox("Select Year", years)
 
-df = load_data()
-
-# Sidebar Filters
-st.sidebar.header("🔍 Filter Data")
-selected_region = st.sidebar.multiselect("Select Region", sorted(df["Region"].unique()))
-selected_category = st.sidebar.multiselect("Select Category", sorted(df["Category"].unique()))
-selected_subcat = st.sidebar.multiselect("Select Sub-Category", sorted(df["Sub-Category"].unique()))
-selected_year = st.sidebar.multiselect("Select Year", sorted(df["Year"].unique()))
+regions = st.sidebar.multiselect("Select Region", df['Region'].unique(), default=df['Region'].unique())
+categories = st.sidebar.multiselect("Select Category", df['Category'].unique(), default=df['Category'].unique())
+sub_categories = st.sidebar.multiselect("Select Sub-Category", df['Sub-Category'].unique(), default=df['Sub-Category'].unique())
+segments = st.sidebar.multiselect("Select Segment", df['Segment'].unique(), default=df['Segment'].unique())
 
 # Apply filters
-if selected_region:
-    df = df[df["Region"].isin(selected_region)]
-if selected_category:
-    df = df[df["Category"].isin(selected_category)]
-if selected_subcat:
-    df = df[df["Sub-Category"].isin(selected_subcat)]
-if selected_year:
-    df = df[df["Year"].isin(selected_year)]
+filtered_df = df[
+    (df['Year'] == year_filter) &
+    (df['Region'].isin(regions)) &
+    (df['Category'].isin(categories)) &
+    (df['Sub-Category'].isin(sub_categories)) &
+    (df['Segment'].isin(segments))
+]
 
-# Data Preview
-st.subheader("🗂️ Data Preview")
-st.dataframe(df.head(10))
+st.title("📊 Global Superstore Dashboard")
 
 # KPIs
-st.subheader("📌 Key Performance Indicators")
+total_sales = filtered_df['Sales'].sum()
+total_profit = filtered_df['Profit'].sum()
+total_orders = filtered_df['Order ID'].nunique()
+
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Sales", f"${df['Sales'].sum():,.0f}")
-col2.metric("Total Profit", f"${df['Profit'].sum():,.0f}")
-col3.metric("Total Orders", f"{df.shape[0]:,}")
+col1.metric("💰 Total Sales", f"${total_sales:,.0f}")
+col2.metric("📈 Total Profit", f"${total_profit:,.0f}")
+col3.metric("🧾 Total Orders", f"{total_orders}")
 
 # Sales by Category
-st.subheader("📦 Sales by Category")
-fig1 = px.bar(
-    df.groupby("Category")["Sales"].sum().reset_index(),
-    x="Category",
-    y="Sales",
-    color="Category",
-    hover_data=["Sales"],
-    title="Total Sales by Category"
-)
-st.plotly_chart(fig1, use_container_width=True)
+fig_cat = px.bar(filtered_df.groupby('Category')['Sales'].sum().reset_index(),
+                 x='Category', y='Sales', title="Sales by Category", text_auto='.2s')
+st.plotly_chart(fig_cat, use_container_width=True)
 
 # Sales by Region
-st.subheader("🌍 Sales by Region")
-fig2 = px.pie(
-    df,
-    values="Sales",
-    names="Region",
-    title="Sales Distribution by Region",
-    hole=0.4
-)
-st.plotly_chart(fig2, use_container_width=True)
+fig_region = px.pie(filtered_df, names='Region', values='Sales', title="Sales by Region", hole=0.4)
+st.plotly_chart(fig_region, use_container_width=True)
 
 # Monthly Sales Trend
-st.subheader("📈 Monthly Sales Trend")
-df_month = df.copy()
-df_month['Month'] = df_month['Order Date'].dt.to_period("M").astype(str)
-df_time = df_month.groupby("Month")["Sales"].sum().reset_index()
-fig3 = px.line(
-    df_time,
-    x="Month",
-    y="Sales",
-    title="Sales Trend Over Time",
-    markers=True,
-    hover_data=["Sales"]
-)
-st.plotly_chart(fig3, use_container_width=True)
+monthly_sales = filtered_df.groupby(filtered_df['Order Date'].dt.to_period('M')).sum(numeric_only=True).reset_index()
+monthly_sales['Order Date'] = monthly_sales['Order Date'].astype(str)
+fig_time = px.line(monthly_sales, x='Order Date', y='Sales', title='Monthly Sales Trend')
+st.plotly_chart(fig_time, use_container_width=True)
 
-# Top 5 Customers by Sales
-st.subheader("🏆 Top 5 Customers by Sales")
-top_customers_sales = df.groupby("Customer Name")["Sales"].sum().reset_index().sort_values(by="Sales", ascending=False).head(5)
-fig4 = px.bar(
-    top_customers_sales,
-    x="Customer Name",
-    y="Sales",
-    color="Sales",
-    title="Top 5 Customers by Sales",
-    hover_data=["Sales"]
-)
-st.plotly_chart(fig4, use_container_width=True)
+# Top Customers by Sales
+top_customers = filtered_df.groupby('Customer Name')['Sales'].sum().nlargest(5).reset_index()
+fig_top_sales = px.bar(top_customers, x='Customer Name', y='Sales', title="Top 5 Customers by Sales", text_auto='.2s')
+st.plotly_chart(fig_top_sales, use_container_width=True)
 
-# Top 10 Customers by Profit
-st.subheader("💰 Top 10 Customers by Profit")
-top_customers_profit = df.groupby("Customer Name")["Profit"].sum().reset_index().sort_values(by="Profit", ascending=False).head(10)
-fig5 = px.bar(
-    top_customers_profit,
-    x="Customer Name",
-    y="Profit",
-    color="Profit",
-    title="Top 10 Customers by Profit",
-    hover_data=["Profit"]
-)
-st.plotly_chart(fig5, use_container_width=True)
+# Top Customers by Profit
+top_profit_customers = filtered_df.groupby('Customer Name')['Profit'].sum().nlargest(10).reset_index()
+fig_top_profit = px.bar(top_profit_customers, x='Customer Name', y='Profit', title="Top 10 Customers by Profit", text_auto='.2s')
+st.plotly_chart(fig_top_profit, use_container_width=True)
 
+# Footer
 st.markdown("---")
-st.caption("Made with ❤️ by Muhammad Zain Mushtaq")
+st.markdown("🚀 Built with Streamlit | By Muhammad Zain Mushtaq")
