@@ -1,6 +1,4 @@
-Thanks! Based on your dataset's structure, shape, and cleaned columns, here is a professionally written `README.md` specifically for the **Global Superstore Dataset** — ideal for placing inside a `data/` or `dataset/` folder.
 
----
 
 # 📦 Global Superstore Dataset
 
