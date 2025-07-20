@@ -30,7 +30,16 @@ if category:
     df = df[df['Category'].isin(category)]
 if sub_category:
     df = df[df['Sub-Category'].isin(sub_category)]
-df = df[df['Year'] == year]
+df = df[df['Year'] == year].reset_index(drop=True)
+
+# Display Current Filter Summary
+st.markdown(f"""
+**Current View Filters:**  
+- 📅 Year: **{year}**  
+- 🌍 Region(s): `{', '.join(region) if region else 'All'}`  
+- 📦 Category(s): `{', '.join(category) if category else 'All'}`  
+- 🔹 Sub-Category(s): `{', '.join(sub_category) if sub_category else 'All'}`
+""")
 
 # KPIs
 st.subheader("📌 Key Metrics")
@@ -43,9 +52,10 @@ profit_margin = (df['Profit'].sum() / df['Sales'].sum()) * 100
 k5.metric("📈 Profit Margin", f"{profit_margin:.2f}%")
 
 # Expandable Data Preview
-with st.expander("📋 Preview Filtered Data"):
+with st.expander("📋 Preview Data (Filtered by Year)"):
+    st.markdown(f"ℹ️ Showing first 10 rows for **year {year}** with current filters applied.")
     st.dataframe(df.head(10))
-    st.download_button("Download CSV", data=df.to_csv(index=False), file_name="filtered_data.csv")
+    st.download_button("📥 Download Filtered Data", data=df.to_csv(index=False), file_name="filtered_data.csv")
 
 # Sales by Category
 st.subheader("📦 Sales by Category")
