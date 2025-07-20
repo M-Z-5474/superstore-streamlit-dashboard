@@ -34,11 +34,13 @@ df = df[df['Year'] == year]
 
 # KPIs
 st.subheader("📌 Key Metrics")
-k1, k2, k3, k4 = st.columns(4)
+k1, k2, k3, k4, k5 = st.columns(5)
 k1.metric("Total Sales", f"${df['Sales'].sum():,.0f}")
 k2.metric("Total Profit", f"${df['Profit'].sum():,.0f}")
 k3.metric("Total Orders", f"{df.shape[0]:,}")
 k4.metric("Total Customers", f"{df['Customer Name'].nunique():,}")
+profit_margin = (df['Profit'].sum() / df['Sales'].sum()) * 100
+k5.metric("📈 Profit Margin", f"{profit_margin:.2f}%")
 
 # Expandable Data Preview
 with st.expander("📋 Preview Filtered Data"):
@@ -65,25 +67,39 @@ df_time['Order Date'] = df_time['Order Date'].astype(str)
 fig3 = px.line(df_time, x="Order Date", y="Sales", markers=True)
 st.plotly_chart(fig3, use_container_width=True)
 
-# 🔍 Product-Level Drill Down
+# 🧾 Product-Level Sales Analysis
 st.subheader("🧾 Product-Level Sales Analysis")
 product_sales = df.groupby("Product Name")["Sales"].sum().reset_index().sort_values(by="Sales", ascending=False).head(10)
 fig4 = px.bar(product_sales, x="Sales", y="Product Name", orientation='h', title="Top 10 Products by Sales", text_auto=True)
 st.plotly_chart(fig4, use_container_width=True)
 
-# 👥 Customer-Level Analysis: Top 10 by Profit
+# 🏆 Top 10 Customers by Profit
 st.subheader("🏆 Top 10 Customers by Profit")
 top_profit_customers = df.groupby("Customer Name")["Profit"].sum().reset_index().sort_values(by="Profit", ascending=False).head(10)
 fig5 = px.bar(top_profit_customers, x="Profit", y="Customer Name", orientation='h', title="Top Customers by Profit", text_auto=True)
 st.plotly_chart(fig5, use_container_width=True)
 
-# 🥇 Top 5 Customers by Sales (✅ Added as per instructions)
+# 🥇 Top 5 Customers by Sales
 st.subheader("🏅 Top 5 Customers by Sales")
 top_sales_customers = df.groupby("Customer Name")["Sales"].sum().reset_index().sort_values(by="Sales", ascending=False).head(5)
 fig_top_sales = px.bar(top_sales_customers, x="Sales", y="Customer Name", orientation='h', title="Top Customers by Sales", text_auto=True)
 st.plotly_chart(fig_top_sales, use_container_width=True)
 
-# 🗺️ City-Wise Sales Map
+# 🧮 Customer Segmentation by Sales
+st.subheader("🧮 Customer Segmentation by Sales")
+customer_data = df.groupby("Customer Name")["Sales"].sum().reset_index()
+customer_data['Segment'] = pd.qcut(customer_data['Sales'], q=3, labels=['Low', 'Medium', 'High'])
+fig_seg = px.pie(customer_data, names='Segment', title='Customer Segments by Sales Volume')
+st.plotly_chart(fig_seg, use_container_width=True)
+
+# 📊 Monthly Sales Heatmap by Category
+st.subheader("📊 Monthly Sales Heatmap by Category")
+heatmap_data = df.copy()
+heatmap_data['Month'] = heatmap_data['Order Date'].dt.strftime('%b')
+pivot_table = heatmap_data.pivot_table(index='Category', columns='Month', values='Sales', aggfunc='sum')
+st.dataframe(pivot_table.style.background_gradient(cmap='Blues'))
+
+# 🌍 City-Wise Sales Distribution
 st.subheader("🌍 City-wise Sales Distribution")
 city_sales = df.groupby(["City", "State", "Country"])["Sales"].sum().reset_index().sort_values(by="Sales", ascending=False).head(50)
 city_sales['City Label'] = city_sales['City'] + ", " + city_sales['State']
