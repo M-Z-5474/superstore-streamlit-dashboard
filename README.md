@@ -126,15 +126,7 @@ streamlit run app.py
 
 ---
 
-## 🌐 Embed in Portfolio
 
-To embed this dashboard in your portfolio website or blog, use the following HTML snippet:
-
-```html
-<iframe src="https://your-streamlit-cloud-link" width="100%" height="900" frameborder="0"></iframe>
-```
-
----
 
 ## 👨‍💻 Developer
 
