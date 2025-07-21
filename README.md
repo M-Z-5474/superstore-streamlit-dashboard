@@ -67,9 +67,11 @@ A fully interactive, professional **Streamlit dashboard** built for analyzing th
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
+
 
 ```
+
 📦 superstore-streamlit-dashboard
 ├── 📄 app.py                   # Main Streamlit dashboard app
 ├── 📄 Global_Superstore.csv    # Dataset used for visualizations
