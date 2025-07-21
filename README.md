@@ -163,9 +163,11 @@ Explore the key features and visualizations of the Global Superstore Dashboard i
 ## 👨‍💻 Developer
 
 **Muhammad Zain Mushtaq**
-📍 *AI/ML & Data Science Enthusiast | Researcher*
+📍 AI/ML & Data Science Enthusiast | Researcher
 📧 [m.zainmushtaq74@gmail.com](mailto:m.zainmushtaq74@gmail.com)
-🔗 [GitHub](https://github.com/M-Z-5474) · [LinkedIn](https://www.linkedin.com/in/muhammad-zain-m-a75163358) · [Portfolio](https://github.com/M-Z-5474)
+🔗 [GitHub](https://github.com/M-Z-5474) 
+   [LinkedIn](https://www.linkedin.com/in/muhammad-zain-m-a75163358) ·
+   [Portfolio](https://github.com/M-Z-5474)
 
 ---
 
