@@ -5,6 +5,10 @@
 [![Python](https://img.shields.io/badge/Made%20With-Python-3670A0?logo=python\&logoColor=white)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![View Demo](https://img.shields.io/badge/Live-Demo-blue)](https://superstore-app-dashboard-gznge95jntfl2yardnu4nc.streamlit.app/)
+![Repo Size](https://img.shields.io/github/repo-size/M-Z-5474/superstore-streamlit-dashboard)
+![Last Commit](https://img.shields.io/github/last-commit/M-Z-5474/superstore-streamlit-dashboard)
+![Status](https://img.shields.io/badge/Status-Deployed-brightgreen)
+
 
 
 ---
