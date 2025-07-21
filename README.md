@@ -160,21 +160,45 @@ Explore the key features and visualizations of the Global Superstore Dashboard i
 
 ---
 
-
-
 ## 👨‍💻 Developer
 
 **Muhammad Zain Mushtaq**
+📍 *AI/ML & Data Science Enthusiast | Researcher*
 📧 [m.zainmushtaq74@gmail.com](mailto:m.zainmushtaq74@gmail.com)
-🔗 [GitHub Profile](https://github.com/M-Z-5474)
+🔗 [GitHub](https://github.com/M-Z-5474) · [LinkedIn](https://www.linkedin.com/in/muhammad-zain-m-a75163358) · [Portfolio](https://github.com/M-Z-5474)
 
 ---
+
+## 💬 Contact
+
+If you have any questions, suggestions, or would like to collaborate, feel free to reach out:
+
+* 📧 Email: [m.zainmushtaq74@gmail.com](mailto:m.zainmushtaq74@gmail.com)
+* 🔗 LinkedIn: [Muhammad Zain Mushtaq](https://www.linkedin.com/in/muhammad-zain-m-a75163358)
+* 🔗 GitHub: [@M-Z-5474](https://github.com/M-Z-5474)
+
+---
+
+## ⭐ Show Your Support
+
+If you found this project helpful:
+
+* 🌟 Star the repo
+* 🔁 Fork it
+* 🐛 Report issues or suggest improvements
+* 🤝 Share it with others
+
+---
+
 ## 📝 License
 
 This project is licensed under the [MIT License](LICENSE).
 
-
 ---
+
+## 🙌 Thank You for Visiting!
+
+Your support motivates future improvements and contributions.
 
 
 
