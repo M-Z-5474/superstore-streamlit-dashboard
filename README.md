@@ -158,10 +158,10 @@ Explore the key features and visualizations of the Global Superstore Dashboard i
 🔗 [GitHub Profile](https://github.com/M-Z-5474)
 
 ---
+## 📝 License
 
-## 📜 License
+This project is licensed under the [MIT License](LICENSE).
 
-This project is licensed under the **MIT License** – free to use, modify, and distribute.
 
 ---
 
