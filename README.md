@@ -115,16 +115,13 @@ streamlit run app.py
 
 ## 📸 Dashboard Screenshots
 
-Explore key features and visualizations of the Global Superstore Dashboard:
+Explore the key features and visualizations of the Global Superstore Dashboard in a logical flow—from high-level overview to detailed analysis.
 
 ### 📊 Main KPIs and Filters
 ![Main KPIs](screenshots/main_keymetrics.png)
 
-### 🌆 City-Wise Sales Distribution
-![City Sales](screenshots/city_wise_sales_districution.png)
-
-### 👥 Customer Segmentation
-![Customer Segmentation](screenshots/customers_segmentation.png)
+### 📋 Preview Data by Year
+![Yearly Preview](screenshots/preview_data_by_year.png)
 
 ### 📅 Monthly Sales
 ![Monthly Sales](screenshots/monthly_sales.png)
@@ -132,8 +129,11 @@ Explore key features and visualizations of the Global Superstore Dashboard:
 ### 📈 Monthly Sales Trend
 ![Monthly Trend](screenshots/monthly_sales_trend.png)
 
-### 📋 Preview Data by Year
-![Yearly Preview](screenshots/preview_data_by_year.png)
+### 🌆 City-Wise Sales Distribution
+![City Sales](screenshots/city_wise_sales_districution.png)
+
+### 🧮 Sales by Categories
+![Category Sales](screenshots/sales_by_catagories.png)
 
 ### 📦 Product-Level Sales Analysis
 ![Product Analysis](screenshots/product_level_sales_analysis.png)
@@ -141,12 +141,11 @@ Explore key features and visualizations of the Global Superstore Dashboard:
 ### 💰 Profit Distribution
 ![Profit Distribution](screenshots/profit_distribution.png)
 
-### 🧮 Sales by Categories
-![Category Sales](screenshots/sales_by_catagories.png)
+### 👥 Customer Segmentation
+![Customer Segmentation](screenshots/customers_segmentation.png)
 
 ### 🏆 Top Customers by Sales
 ![Top Customers](screenshots/top_customers_by_sales.png)
-
 
 ---
 
