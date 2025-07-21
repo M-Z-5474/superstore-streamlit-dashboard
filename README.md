@@ -113,17 +113,40 @@ streamlit run app.py
 
 ---
 
-## 📷 Dashboard Previews
+## 📸 Dashboard Screenshots
 
-### 🔍 Sidebar + KPIs
+Explore key features and visualizations of the Global Superstore Dashboard:
 
-![filters and kpis](screenshots/kpi_filters.png)
+### 📊 Main KPIs and Filters
+![Main KPIs](screenshots/main_keymetrics.png)
 
-### 📈 Visual Insights
+### 🌆 City-Wise Sales Distribution
+![City Sales](screenshots/city_wise_sales_districution.png)
 
-![charts](screenshots/charts.png)
+### 👥 Customer Segmentation
+![Customer Segmentation](screenshots/customers_segmentation.png)
 
-> Add your screenshots inside a `screenshots/` folder in your repo.
+### 📅 Monthly Sales
+![Monthly Sales](screenshots/monthly_sales.png)
+
+### 📈 Monthly Sales Trend
+![Monthly Trend](screenshots/monthly_sales_trend.png)
+
+### 📋 Preview Data by Year
+![Yearly Preview](screenshots/preview_data_by_year.png)
+
+### 📦 Product-Level Sales Analysis
+![Product Analysis](screenshots/product_level_sales_analysis.png)
+
+### 💰 Profit Distribution
+![Profit Distribution](screenshots/profit_distribution.png)
+
+### 🧮 Sales by Categories
+![Category Sales](screenshots/sales_by_catagories.png)
+
+### 🏆 Top Customers by Sales
+![Top Customers](screenshots/top_customers_by_sales.png)
+
 
 ---
 
