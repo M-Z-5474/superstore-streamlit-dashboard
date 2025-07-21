@@ -69,14 +69,24 @@ A fully interactive, professional **Streamlit dashboard** built for analyzing th
 
 ## 📁 Folder Structure
 
+
+```markdown
+## 📁 Folder Structure
+
 ```
+
 📦 superstore-streamlit-dashboard
-├── 📄 app.py                 # Main Streamlit dashboard code
-├── 📄 Global_Superstore.csv  # Dataset (input file)
-├── 📄 requirements.txt       # Python dependencies
-├── 📄 README.md              # Project documentation
-└── 📁 screenshots/           # App screenshots 
+├── 📄 app.py                   # Main Streamlit dashboard app
+├── 📄 Global_Superstore.csv    # Dataset used for visualizations
+├── 📄 LICENSE                  # MIT License file
+├── 📄 README.md                # Project documentation
+├── 📄 requirements.txt         # Python dependencies
+├── 📄 dataset-readme.md        # Description of dataset fields
+├── 📁 screenshots/             # App screenshots used in README
+└── 📁 notebook/                # Jupyter notebooks 
+
 ```
+
 
 ---
 
