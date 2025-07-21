@@ -2,15 +2,18 @@
 
 This folder contains high-resolution screenshots of the **Global Superstore Streamlit Dashboard**.
 
-These images are used in the main `README.md` file to visually demonstrate the key components and insights available in the dashboard.
+These visuals demonstrate various analytical components and insights offered by the dashboard and are referenced in the main project `README.md`.
 
 ### 📸 Included Visuals:
-- City-wise sales distribution
-- Customer segmentation analysis
-- Key metrics overview
-- Monthly and yearly sales trends
-- Product-level sales breakdown
-- Profit and category distributions
-- Top customers by sales
+- 🗺️ **City-wise Sales Distribution** (`city_wise_sales_districution.png`)
+- 👥 **Customer Segmentation Analysis** (`customers_segmentation.png`)
+- 📊 **Key Metrics Overview** (`main_keymetrics.png`)
+- 📅 **Monthly Sales** (`monthly_sales.png`)
+- 📈 **Monthly Sales Trend** (`monthly_sales_trend.png`)
+- 📋 **Yearly Data Preview** (`preview_data_by_year.png`)
+- 📦 **Product-Level Sales Analysis** (`product_level_sales_analysis.png`)
+- 💰 **Profit Distribution** (`profit_distribution.png`)
+- 🧮 **Sales by Categories** (`sales_by_catagories.png`)
+- 🏆 **Top Customers by Sales** (`top_customers_by_sales.png`)
 
-Use these to preview the dashboard.
+Use these images for documentation, demonstration, or portfolio showcase purposes.
